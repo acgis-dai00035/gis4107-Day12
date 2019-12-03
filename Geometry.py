@@ -58,9 +58,8 @@ class Line(object):
 
 class Polyline(object):
 
-    def __init__(self,segments,length):
-        self.__segments = [segments]
-        self.__length = length
+    def __init__(self):
+        self.__segments = []
 
 
     @property
@@ -70,12 +69,14 @@ class Polyline(object):
 
     @property
     def length(self):
+        self.__length = 0.0
+        for i in self.__segments:
+            self.__length += ((i.to_point.x-i.from_point.x)**2+(i.to_point.y-i.from_point.y)**2)**0.5
         return self.__length
 
 
     def add_segment(self,seg):
         self.segments.append(seg)
-        self.__length += ((seg.to_point.x-seg.from_point.x)**2+(seg.to_point.y-seg.from_point.y)**2)**0.5
 
 
 

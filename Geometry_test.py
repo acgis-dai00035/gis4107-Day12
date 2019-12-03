@@ -86,7 +86,8 @@ def test_polyline():
     line2 = Geometry.Line()
     line2.from_point = point3
     line2.to_point = point4
-    polyline1 = Geometry.Polyline(line1,line1.length)
+    polyline1 = Geometry.Polyline()
+    polyline1.add_segment(line1)
     polyline1.add_segment(line2)
     expected = ((4.0-1.0)**2+(6.0-2.0)**2)**0.5 +((5.0-3.0)**2+(6.0-4.0)**2)**0.5
     actual = polyline1.length
