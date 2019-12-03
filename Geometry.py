@@ -10,7 +10,7 @@
 #
 # Created:     dd/mm/yyyy
 # ------------------------------------------------------------------------------
-
+import math
 def main():
     pass
 
@@ -56,9 +56,10 @@ class Line(object):
         return ((self.to_point.x-self.from_point.x)**2+(self.to_point.y-self.from_point.y)**2)**0.5
 
 
-class Polyline:
+class Polyline(object):
+
     def __init__(self,segments,length):
-        self.__segments = segments
+        self.__segments = [segments]
         self.__length = length
 
 
@@ -71,8 +72,10 @@ class Polyline:
     def length(self):
         return self.__length
 
+
     def add_segment(self,seg):
         self.segments.append(seg)
+        self.__length += ((seg.to_point.x-seg.from_point.x)**2+(seg.to_point.y-seg.from_point.y)**2)**0.5
 
 
 
